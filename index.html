@@ -6,6 +6,16 @@
   <title>Семейный Бюджет — планируйте деньги уверенно</title>
   <meta name="description" content="Простой сервис для учета доходов, расходов и целей сбережений семьи." />
   <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml" />
+  <script>
+    (function () {
+      try {
+        var theme = localStorage.getItem("family_budget_theme") || "light";
+        document.documentElement.setAttribute("data-theme", theme);
+      } catch (e) {
+        document.documentElement.setAttribute("data-theme", "light");
+      }
+    })();
+  </script>
   <link rel="stylesheet" href="./assets/css/styles.css" />
 </head>
 <body>
@@ -15,7 +25,7 @@
       <nav class="nav-links">
         <a href="#about">О проекте</a>
         <a href="#features">Возможности</a>
-        <button id="themeToggle" class="btn btn-ghost btn-small" type="button">Тема: светлая</button>
+        <button id="themeToggle" class="btn btn-ghost btn-small" type="button" aria-label="Переключить тему">Тема: светлая</button>
         <a class="btn btn-small" href="./калькулятор.html">Открыть калькулятор</a>
       </nav>
     </div>
