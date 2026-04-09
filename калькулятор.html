@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Калькулятор семейного бюджета</title>
+  <meta name="description" content="Учет доходов и расходов семьи, цели сбережений и процент выполнения." />
+  <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="./assets/css/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="logo" href="./index.html">Семейный Бюджет</a>
+      <nav class="nav-links">
+        <a href="./index.html">Лендинг</a>
+        <button id="themeToggle" class="btn btn-ghost btn-small" type="button">Тема: светлая</button>
+        <a class="btn btn-small" href="./калькулятор.html">Калькулятор</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container page-pad">
+    <h1>Калькулятор семейного бюджета</h1>
+    <p class="subtitle">Управляйте семейными финансами в рублях и отслеживайте выполнение целей по накоплениям.</p>
+
+    <div class="grid">
+      <section class="card" aria-labelledby="incomeTitle">
+        <h2 id="incomeTitle">Доходы</h2>
+        <p class="hint">Добавьте все источники: зарплата, подработка, пособия.</p>
+        <div id="incomeRows" class="rows"></div>
+        <div class="controls">
+          <button id="addIncomeBtn" class="btn" type="button">+ Добавить доход</button>
+        </div>
+      </section>
+
+      <section class="card" aria-labelledby="expenseTitle">
+        <h2 id="expenseTitle">Расходы</h2>
+        <p class="hint">Добавьте постоянные и переменные траты.</p>
+        <div id="expenseRows" class="rows"></div>
+        <div class="controls">
+          <button id="addExpenseBtn" class="btn" type="button">+ Добавить расход</button>
+        </div>
+      </section>
+    </div>
+
+    <section class="card mt16">
+      <h2>Параметры семьи и цели</h2>
+      <div class="stack">
+        <input id="adultsCount" type="number" min="1" step="1" value="2" placeholder="Количество взрослых" />
+        <input id="childrenCount" type="number" min="0" step="1" value="1" placeholder="Количество детей" />
+        <select id="periodSelect" aria-label="Период расчета">
+          <option value="month" selected>Период: месяц</option>
+          <option value="year">Период: год (делится на 12)</option>
+        </select>
+      </div>
+      <div class="stack mt8">
+        <input id="targetMinPercent" type="number" min="0" max="100" step="1" value="10" placeholder="Минимальная цель, %" />
+        <input id="targetMaxPercent" type="number" min="0" max="100" step="1" value="20" placeholder="Комфортная цель, %" />
+        <div class="small align-center">Рекомендация: откладывать 10–20% от дохода.</div>
+      </div>
+    </section>
+
+    <section class="card mt16">
+      <h2>Итоги</h2>
+      <div class="summary-grid">
+        <div class="stat"><div class="stat-title">Общий доход (в месяц)</div><div id="totalIncome" class="stat-value">0 ₽</div></div>
+        <div class="stat"><div class="stat-title">Общие расходы (в месяц)</div><div id="totalExpense" class="stat-value">0 ₽</div></div>
+        <div class="stat"><div class="stat-title">Баланс (доходы - расходы)</div><div id="balance" class="stat-value">0 ₽</div></div>
+        <div class="stat"><div class="stat-title">Доля сбережений</div><div id="savingsRate" class="stat-value">0%</div></div>
+        <div class="stat"><div class="stat-title">Баланс на 1 человека</div><div id="perPerson" class="stat-value">0 ₽</div></div>
+        <div class="stat"><div class="stat-title">Расходы на 1 человека</div><div id="expensePerPerson" class="stat-value">0 ₽</div></div>
+      </div>
+
+      <div class="divider"></div>
+
+      <h2 class="h2-reset">Цель по сбережениям</h2>
+      <div class="summary-grid">
+        <div class="stat"><div class="stat-title">Минимальная цель</div><div id="targetMinAmount" class="stat-value">0 ₽</div></div>
+        <div class="stat"><div class="stat-title">Комфортная цель</div><div id="targetMaxAmount" class="stat-value">0 ₽</div></div>
+      </div>
+      <div class="summary-grid mt12">
+        <div class="stat"><div class="stat-title">Выполнение минимальной цели</div><div id="targetMinProgressText" class="stat-value">0%</div></div>
+        <div class="stat"><div class="stat-title">Выполнение комфортной цели</div><div id="targetMaxProgressText" class="stat-value">0%</div></div>
+      </div>
+      <div class="progress-wrap">
+        <div>
+          <div class="progress-label"><span>Прогресс к минимальной цели</span><span id="targetMinProgressLabel">0%</span></div>
+          <div class="progress-track"><div id="targetMinProgressBar" class="progress-fill"></div></div>
+        </div>
+        <div>
+          <div class="progress-label"><span>Прогресс к комфортной цели</span><span id="targetMaxProgressLabel">0%</span></div>
+          <div class="progress-track"><div id="targetMaxProgressBar" class="progress-fill"></div></div>
+        </div>
+      </div>
+      <div id="targetAdvice" class="advice">Здесь появится подсказка по достижению цели.</div>
+
+      <div class="footer-actions">
+        <button id="resetBtn" class="btn btn-danger" type="button">Очистить все данные</button>
+        <button id="exportBtn" class="btn btn-ghost" type="button">Экспорт в JSON</button>
+        <label class="btn btn-ghost" for="importInput">Импорт из JSON</label>
+        <input id="importInput" type="file" accept=".json,application/json" class="hidden-input" />
+      </div>
+      <p class="small mt8">Данные автоматически сохраняются в браузере (localStorage).</p>
+    </section>
+
+    <section class="card mt16">
+      <h2>Структура расходов по категориям</h2>
+      <p class="hint">Наглядный мини‑график показывает, какие категории занимают большую долю расходов.</p>
+      <div id="expenseChart" class="expense-chart"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> Семейный Бюджет</p>
+      <p>Планируйте спокойно и прозрачно.</p>
+    </div>
+  </footer>
+
+  <script src="./assets/js/main.js"></script>
+  <script src="./assets/js/calculator-core.js"></script>
+  <script src="./assets/js/calculator.js"></script>
+</body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Семейный Бюджет — планируйте деньги уверенно</title>
+  <meta name="description" content="Простой сервис для учета доходов, расходов и целей сбережений семьи." />
+  <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="./assets/css/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="logo" href="./index.html">Семейный Бюджет</a>
+      <nav class="nav-links">
+        <a href="#about">О проекте</a>
+        <a href="#features">Возможности</a>
+        <button id="themeToggle" class="btn btn-ghost btn-small" type="button">Тема: светлая</button>
+        <a class="btn btn-small" href="./калькулятор.html">Открыть калькулятор</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <p class="badge">Личный финансовый помощник</p>
+          <h1>Управляйте семейным бюджетом без сложных таблиц</h1>
+          <p class="lead">
+            Ведите доходы и расходы, следите за балансом и контролируйте выполнение цели
+            сбережений в удобном калькуляторе.
+          </p>
+          <div class="hero-actions">
+            <a class="btn" href="./калькулятор.html">Перейти к калькулятору</a>
+            <a class="btn btn-ghost" href="#features">Посмотреть возможности</a>
+          </div>
+        </div>
+        <div class="hero-card">
+          <h2>Почему удобно?</h2>
+          <ul>
+            <li>Интерфейс полностью на русском языке.</li>
+            <li>Суммы всегда в рублях (₽).</li>
+            <li>Автосохранение в браузере.</li>
+            <li>Экспорт и импорт данных в JSON.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section">
+      <div class="container">
+        <h2>О проекте</h2>
+        <p>
+          Это небольшой веб‑проект для семейного финансового планирования. Подходит для
+          ежедневного учета и для долгосрочного контроля целей: от минимальной подушки
+          безопасности до комфортного процента накоплений.
+        </p>
+      </div>
+    </section>
+
+    <section id="features" class="section section-soft">
+      <div class="container">
+        <h2>Возможности</h2>
+        <div class="feature-grid">
+          <article class="feature">
+            <h3>Учет доходов и расходов</h3>
+            <p>Добавляйте неограниченное количество статей и получайте моментальный пересчет.</p>
+          </article>
+          <article class="feature">
+            <h3>Цели сбережений</h3>
+            <p>Укажите минимальный и комфортный процент накоплений, отслеживайте прогресс.</p>
+          </article>
+          <article class="feature">
+            <h3>Прогресс в процентах</h3>
+            <p>Наглядные полосы выполнения для обеих целей и текстовые подсказки.</p>
+          </article>
+          <article class="feature">
+            <h3>Семейная аналитика</h3>
+            <p>Баланс и расходы в пересчете на одного человека.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="how" class="section">
+      <div class="container">
+        <h2>Как пользоваться</h2>
+        <div class="steps-grid">
+          <article class="feature">
+            <h3>1. Добавьте доходы</h3>
+            <p>Заполните все основные и дополнительные источники поступлений.</p>
+          </article>
+          <article class="feature">
+            <h3>2. Запишите расходы</h3>
+            <p>Укажите регулярные и разовые траты для честной картины бюджета.</p>
+          </article>
+          <article class="feature">
+            <h3>3. Настройте цели</h3>
+            <p>Выберите минимальный и комфортный процент сбережений.</p>
+          </article>
+          <article class="feature">
+            <h3>4. Следите за прогрессом</h3>
+            <p>Ориентируйтесь на проценты, прогресс-бары и подсказки системы.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section cta">
+      <div class="container cta-box">
+        <h2>Готовы начать?</h2>
+        <p>Откройте калькулятор и заполните первые статьи бюджета за минуту.</p>
+        <a class="btn" href="./калькулятор.html">Запустить калькулятор</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> Семейный Бюджет</p>
+      <p>Сделано для удобного финансового планирования.</p>
+    </div>
+  </footer>
+
+  <script src="./assets/js/main.js"></script>
+</body>
+</html>
